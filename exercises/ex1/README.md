@@ -1,206 +1,206 @@
 # Exercise 1 — Supplier Concentration Risk by Country
 
-In this exercise, you will use the Data Product Creation Agent to build a derived data product that groups purchase orders by supplier country. The agent will search for source data, handle a real schema gap, and ask you to make a trade-off decision — all with your approval at each step.
+In this exercise you will use Joule Studio to create a derived data product that groups purchase orders by supplier country. The agent guides you through five phases: **Prompt → Intent → Requirements → Specifications → Solution**. You make one key input per phase; the agent handles the rest.
 
-**What you will build:** A data product that joins Purchase Order and Supplier master data to help procurement teams identify supplier concentration risk by country.
+**What you will build:** A data product that joins Purchase Order and Business Partner data to help procurement teams identify supplier concentration risk by country.
 
-**Time:** ~60 minutes
+**Time:** ~30 minutes
 
 ---
 
-## Part 1 — Getting Started
+## Phase 1 — Prompt
 
-### Step 1 — Confirm Access
-
-Log in to Joule Studio and verify you can see the Solutions list.
+### Step 1 — Open Joule Studio and Start a New Data Product
 
 1. Open the Joule Studio URL provided for this workshop and sign in with your assigned credentials.
+2. On the home screen, click **Create Data Product**.
 
-✓ **Checkpoint** — You should see: the Joule Studio home screen with a **Solutions** list on the left and a **+ New** button.
+![Create a Data Product dialog](images/01_01_prompt_dialog.png)
 
----
-
-### Step 2 — Start a New Data Product
-
-1. Click **+ New**.
-2. Select **Data Product** from the options presented.
-<br>![Selecting Data Product from the New menu](images/01_02_0010.png)
-
-✓ **Checkpoint** — You should see: the **Create a Data Product** dialog.
+A dialog appears with three fields: **Solution**, **Name**, and **Intent Statement**.
 
 ---
 
-### Step 3 — Name Your Solution and Enter the Intent Statement
+### Step 2 — Fill in the Prompt
 
-1. In the **Name** field, enter your name followed by `Supplier Risk Demo` — for example: `Alex Supplier Risk Demo`. This makes your solution easy to find in the list later.
+1. In the **Name** field, enter your first name followed by `Supplier Risk Demo` — for example: `Alex Supplier Risk Demo`. This makes your solution easy to find later.
 2. In the **Intent Statement** field, paste the following exactly:
 
-> **Paste this:**
 > ```
 > Create a Data Product that helps to group purchase orders by country to understand supplier concentration risks across the procurement portfolio.
 > ```
 
-3. Leave **Quick Create** unchecked — you want the full guided experience with every decision point visible.
+3. Leave **Quick Create** unchecked — this keeps every decision point visible.
 4. Click **Create**.
-<br>![Create a Data Product dialog with name and intent filled in](images/01_03_0010.png)
 
-✓ **Checkpoint** — You should see: a new solution workspace opens, and your intent statement appears as the first message in the chat panel.
-
----
-
-## Part 2 — From Intent to Requirements
-
-### Step 4 — Source Discovery
-
-The agent now searches for a matching source data product in your landscape.
-
-1. Wait while the agent searches. Do not click anything. The question the agent asks you get may vary.
-<br>![Agent recommending the Purchase Order data product](images/01_04_0010.png)
-
-✓ **Checkpoint** — You should see: a recommendation for the data products (`sap.s4com:dataProduct:PurchaseOrder:v1`), with a description of why it fits your requirement.
-
-> **If you see an error (e.g. a 502 error):** This is a known transient issue. The agent will retry automatically within a few seconds. Wait up to 30 seconds before raising your hand.
+✓ **Checkpoint** — A new solution workspace opens and your intent statement appears as the first message in the chat panel.
 
 ---
 
-### Step 5 — Confirm the Source
+## Phase 2 — Intent
 
-1. Select the recommended data products to confirm it as your source.
-<br>![Confirming the Purchase Order source](images/01_05_0010.png)
+The agent now investigates your landscape before asking any questions.
 
-✓ **Checkpoint** — You should see: the agent proceeds to run a fit-gap analysis and begins writing the intent document.
+### Step 3 — Watch the Agent Discover Sources
 
----
+The agent automatically runs discovery queries in parallel. No input needed here.
 
-### Step 6 — Choose the Guided Path
+![Agent running discovery and activating skills](images/01_02_intent_discovery.png)
 
-The agent offers two options for how to continue.
-
-1. Click **Create Requirements File** — this keeps every clarifying step visible.
-<br>![Choosing Create Requirements File over Generate Solution](images/01_06_0010.png)
-
-> **Note:** "Generate Solution" fast-tracks to the result with reasonable assumptions. Today you use the guided path so every decision point is visible.
-
-✓ **Checkpoint** — You should see: the agent begins writing the requirements and the pipeline bar updates to show **Requirements** in progress.
+After a few seconds the agent reports what it found: an active **Purchase Order** data product and an active **Business Partner** data product — both are candidates as source inputs. It then asks you one focused question.
 
 ---
 
-### Step 7 — Review and Confirm the PRD
+### Step 4 — Answer the Clarifying Question
 
-1. Read through the **personas** and **key requirements** in the right-hand panel. Look for the specific requirement about computing a concentration risk indicator (High / Medium / Low).
-<br>![Generated personas and key requirements](images/01_07_0010.png)
+The agent asks: **"Who will primarily use this data product, and what decisions will they make with it?"**
 
-✓ **Checkpoint** — You should see: a list of personas (e.g. Procurement/Sourcing Manager, Risk & Compliance Officer), a **Key Requirements (Must-Have)** list, and explicit Scope Boundaries.
+![Agent asking who will use the data product](images/01_03_intent_question.png)
 
-2. When prompted to review the PRD summary, select **Confirm — write the PRD** to proceed.
-<br>![Full PRD open in the center panel](images/01_07b_0010.png)
+1. Select **Procurement / Category Managers — to review supplier base diversity**.
 
-✓ **Checkpoint** — You should see: a complete PRD in the center panel, with sections for Product Purpose & Value Proposition, Goals (In Scope), and Non-Goals (Out of Scope).
+![First option selected](images/01_04_intent_selected.png)
 
----
+2. Click **Submit Answer**.
 
-## Part 3 — The Schema Gap
-
-### Step 8 — Generate the Specification
-
-1. Once you have reviewed the PRD, paste the following into the chat panel:
-
-> **Paste this:**
-> ```
-> execute specification/specification.md
-> ```
-
-✓ **Checkpoint** — You should see: the pipeline bar at the top shows **Specification** actively in progress, and the chat panel begins listing execution steps.
+The agent automatically answers the remaining questions (country dimension, metrics, business outcome, concentration threshold) and assembles a complete **Intent Analysis Summary**.
 
 ---
 
-### Step 9 — Approve the Proposed Name and Description
+### Step 5 — Confirm the Intent Summary
 
-The agent proposes a Technical Name, Business Name, Short Description, and Description for your data product.
+The agent presents a summary including:
+- Business Challenge
+- Primary Users
+- Business Goals & Success Criteria (with a 30% concentration threshold)
+- Business Architecture (Source to Pay E2E)
+- Fit-Gap Analysis (PurchaseOrder:v1 + BusinessPartner:v1 as sources; custom derived product needed)
+- **Intent Fit: 95%**
 
-1. Review each field.
-2. If they look correct, select **Approve**.
-3. If you want to change just one field, use the specific **Change...** option for that field rather than starting over.
-<br>![Naming approval gate with per-field change options](images/01_09_0010.png)
+![Intent Analysis Summary with Confirm option](images/01_05_intent_summary.png)
 
-✓ **Checkpoint** — You should see: the agent continues to the next specification step after you approve.
+The first option **Confirm** is already selected. Click **Submit Answer**.
 
----
+The agent writes `intent.md` and the center panel opens the completed intent document.
 
-### Step 10 — The Agent Finds a Real Gap
+![intent.md open in the editor](images/01_06_intent_complete.png)
 
-The agent has discovered that the Purchase Order data does not contain a usable supplier-country field — only a Supplier ID that references a separate data product.
-
-1. Read the agent's explanation carefully.
-<br>![Schema gap explanation — missing supplier country column](images/01_10_0010.png)
-
-> **Why this matters:** The agent correctly avoided two fields that look relevant (`VATRegistrationCountry`, `TaxReturnCountry`) but actually describe the company's own tax country, not the supplier's country. This is the agent grounding its recommendation in what the data actually means.
-
-2. Select the first option: **search for a Supplier master data product** to enrich the result with country data.
-<br>![Choosing to search for a Supplier master data product](images/01_10b_0010.png)
-
-✓ **Checkpoint** — You should see: the agent finds a **Supplier** data product (`sap.s4com:dataProduct:Supplier:v1`), confirms it is the right match, and adds it as a second source.
+✓ **Checkpoint** — The **Intent Summary** step in the Solution Progress bar shows a green checkmark.
 
 ---
 
-### Step 11 — The Trade-Off Decision
+## Phase 3 — Requirements
 
-Computing the full spend-share percentage requires a calculation that forces a full data recompute on every update, rather than processing only changed rows.
+### Step 6 — Generate the PRD
 
-1. Read the explanation and the four options with their stated trade-offs.
-<br>![Four options with performance trade-offs](images/01_11_0010.png)
+Click **Generate Requirements** in the top-right corner of the center panel.
 
-2. Choose **Include both — I accept full-refresh mode** to get the complete metric.
+The agent reads the intent, drafts a requirements summary, auto-confirms, and writes `product-requirements-document.md`.
 
-✓ **Checkpoint** — You should see: the agent records your decision and continues with the specification.
+![Product Requirements Document in the editor](images/01_07_requirements_done.png)
 
----
+The PRD includes:
+- **Product Purpose & Value Proposition** with elevator pitch and product objectives
+- **Business Metrics** table (concentration risk threshold, geographic diversification target)
+- **User Profiles & Personas**
+- **5 must-have requirements**: PO aggregation by country, share percentage, concentration flag, join accuracy, DPQuery access
+- **Scope Boundaries**: in scope and out of scope items
 
-## Part 4 — Governance and Review
-
-### Step 12 — Confirm Authorization
-
-The agent recommends exposing `SupplierCountry` for row-level authorization.
-
-1. Select **Yes, expose SupplierCountry for authorization**.
-<br>![Authorization recommendation for SupplierCountry](images/01_12_0010.png)
-
-✓ **Checkpoint** — You should see: the message **"AMS policy injected. Proceeding to Step 6 — Setup Solution."**
+✓ **Checkpoint** — The **Requirements** step in the Solution Progress bar shows a green checkmark.
 
 ---
 
-### Step 13 — Review the Finished Data Product
+## Phase 4 — Specifications
 
-The agent presents a plain-language summary of what was built: what is grouped, which attributes are included, what filter is applied, and what authorization policy is in place.
+### Step 7 — Generate the Specification
 
-1. Read the summary.
-2. Select **Preview the data** to see sample rows.
-<br>![Live preview with sample rows per supplier country](images/01_13_0010.png)
+Click **Generate Specifications** in the top-right corner.
 
-✓ **Checkpoint** — You should see: a table of sample rows, one per supplier country (e.g. DE, CN, US, IN), with purchase order counts and spend values.
+The agent reads the PRD and writes a `specification.md` with a 2-step build plan.
 
-> **Note:** This preview uses realistic mock data, not live customer data.
+![Specification with Solution Setup and Asset Implementation steps](images/01_08_specs_done.png)
+
+The specification defines:
+- **Step 1 — Solution Setup**: create asset directory, invoke `setup-solution` skill, validate files
+- **Step 2 — Asset Implementation**: CDS transformation, interop definition, AMS policy
+
+✓ **Checkpoint** — The **Specifications** step in the Solution Progress bar shows a green checkmark.
 
 ---
 
-### Step 14 — Wrap Up
+## Phase 5 — Solution
 
-1. Once you are satisfied with the preview, select **Approve**.
-2. **Do not click Deploy.** Testing and deployment are not demonstrated in this session.
-<br>![Approve the data product — do not click Deploy](images/01_14_0010.png)
+### Step 8 — Generate the Solution
 
-✓ **Checkpoint** — You should see: your data product definition saved and listed in your Solutions view.
+Click **Generate Solution** in the top-right corner. The agent begins executing the specification step by step.
+
+---
+
+### Step 9 — Approve the Data Product Metadata
+
+The agent proposes a technical name, business name, and description for your data product.
+
+![Metadata approval with first option pre-selected](images/01_09_solution_metadata.png)
+
+The first option **Approve — use default responsible** is already selected. Click **Submit Answer**.
+
+---
+
+### Step 10 — The Trade-Off Decision
+
+The agent discovers that computing `POSharePercent` and `IsConcentrationRisk` requires a **window function**, which forces a full data refresh on every update rather than incremental processing.
+
+![Window function trade-off question](images/01_10_solution_tradeoff.png)
+
+The first option — **Proceed with full-refresh — include POSharePercent and IsConcentrationRisk (recommended, matches PRD)** — is already selected. Click **Submit Answer**.
+
+> **Why this matters:** The agent is surfacing a real technical trade-off: completeness of the metric vs. update performance. Choosing full-refresh means the concentration flag is always accurate; choosing incremental means faster updates but consumers must calculate the share themselves.
+
+---
+
+### Step 11 — Review the Mock Data Preview
+
+The agent completes the build and presents a mock data preview showing what the data product returns:
+
+![Mock data preview with concentration risk flag](images/01_11_solution_preview.png)
+
+Verify the output looks correct:
+- One row per `SupplierCountry`
+- `POCount` and `POSharePercent` per country
+- `IsConcentrationRisk = 1` for any country exceeding 30% (DE in this example)
+- `Unknown` bucket for POs where the supplier has no registered country
+
+Type **`looks good, approve`** in the message box and press Enter.
+
+---
+
+### Step 12 — Inspect the Completed Data Product
+
+The agent finalises the build and the center panel switches to the data product diagram view.
+
+![Completed data product with file tree and diagram](images/01_12_solution_complete.png)
+
+The file tree on the left confirms all artifacts were written:
+- `transformation.cds` — CDS cube joining PurchaseOrder + BPFinancialServicesExtension
+- `asset.yaml` — interop definition (DPD)
+- `solution.yaml` — solution metadata
+- `specification.md`, `intent.md`, `product-requirements-document.md` — the full design trail
+
+✓ **Checkpoint** — All four steps in the Solution Progress bar show green checkmarks: Intent Summary, Requirements, Specifications, Solution Artifacts.
+
+> **Do not click Deploy.** Testing and deployment are covered in a later exercise.
 
 ---
 
 ## Summary
 
-You have completed Exercise 1. You used the Data Product Creation Agent to:
+You have completed Exercise 1. Following the **Prompt → Intent → Requirements → Specifications → Solution** flow, you:
 
-- Turn a two-sentence business requirement into a fully governed data product definition
-- Confirm a source data product recommended by the agent
-- Resolve a real schema gap by adding a second source
-- Make an explicit trade-off decision about performance vs. completeness
-- Apply an authorization policy with a single confirmation
+- Entered a two-sentence business requirement as the prompt
+- Answered one clarifying question: selected **Procurement / Category Managers** as the primary users; the agent completed intent analysis and wrote `intent.md`
+- Generated a full PRD from the intent document
+- Generated a build specification from the PRD
+- Approved metadata, made one trade-off decision, and reviewed a mock data preview
+- Produced a fully governed derived data product joining Purchase Order and Business Partner data
 
-Continue to [Exercise 2 — Active Cost Centers for India](../ex2/README.md)
+Continue to [Exercise 2](../ex2/README.md)
