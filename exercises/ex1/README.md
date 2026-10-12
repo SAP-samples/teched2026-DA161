@@ -54,10 +54,10 @@ Log in to Joule Studio and verify you can see the Solutions list.
 
 The agent now searches for a matching source data product in your landscape.
 
-1. Wait while the agent searches. Do not click anything.
+1. Wait while the agent searches. Do not click anything. The question the agent asks you get may vary.
 <br>![Agent recommending the Purchase Order data product](images/01_04_0010.png)
 
-✓ **Checkpoint** — You should see: a recommendation for the **Purchase Order** data product (`sap.s4com:dataProduct:PurchaseOrder:v1`), with a description of why it fits your requirement.
+✓ **Checkpoint** — You should see: a recommendation for the data products (`sap.s4com:dataProduct:PurchaseOrder:v1`), with a description of why it fits your requirement.
 
 > **If you see an error (e.g. a 502 error):** This is a known transient issue. The agent will retry automatically within a few seconds. Wait up to 30 seconds before raising your hand.
 
@@ -65,7 +65,7 @@ The agent now searches for a matching source data product in your landscape.
 
 ### Step 5 — Confirm the Source
 
-1. Select the recommended **Purchase Order** data product to confirm it as your source.
+1. Select the recommended data products to confirm it as your source.
 <br>![Confirming the Purchase Order source](images/01_05_0010.png)
 
 ✓ **Checkpoint** — You should see: the agent proceeds to run a fit-gap analysis and begins writing the intent document.
