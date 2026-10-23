@@ -132,7 +132,7 @@ The specification defines:
 
 ### Step 8 — Generate the Solution
 
-Click **Generate Solution** in the top-right corner. The agent begins executing the specification step by step.
+Click **Generate Solution** in the top-right corner or just type **execute specification/specification.md**. The agent begins executing the specification step by step.
 
 ---
 
