@@ -17,7 +17,7 @@ By the end of this session, attendees will be able to:
 
 ## Requirements
 
-- A provisioned Joule Studio tenant and working login (provided for workshop attendees)
+- A [provisioned Joule Studio](https://747391938.eu10.sapdas.cloud.sap/new/) tenant and working login (provided for workshop attendees)
 - No prior experience with SQL, CDS, or data modelling is required
 
 ## Exercises
